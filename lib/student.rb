@@ -29,15 +29,12 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE name = ?
-      LIMIT 1;
+      WHERE name = ?;
     SQL
 
     DB[:conn].execute(sql, name).map do |row|
-      
       Student.new_from_db(row)
     end
-
   end
 
   def save
