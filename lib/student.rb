@@ -64,14 +64,15 @@ output = []
 return output
 end
 
-def self.first_X_students_in_grade_10
+def self.first_X_students_in_grade_10(input)
   sql = <<-SQL
     SELECT *
     FROM students
-    WHERE grade <= 11;
+    WHERE grade = 10
+    LIMIT ?;
   SQL
 output = []
-  DB[:conn].execute(sql).map do |row|
+  DB[:conn].execute(sql, input).map do |row|
     output << Student.new_from_db(row)
   end
 return output
