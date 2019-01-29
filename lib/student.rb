@@ -51,6 +51,19 @@ output = []
 return output
 end
 
+def self.all_students_in_grade_X(input)
+  sql = <<-SQL
+    SELECT *
+    FROM students
+    WHERE grade = ?;
+  SQL
+output = []
+  DB[:conn].execute(sql,input).map do |row|
+    output << Student.new_from_db(row)
+  end
+return output
+end
+
 def self.students_below_12th_grade
   sql = <<-SQL
     SELECT *
