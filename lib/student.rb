@@ -51,7 +51,7 @@ output = []
 return output
 end
 
-def self.all_students_in_grade_9
+def self.students_below_12th_grade
   sql = <<-SQL
     SELECT *
     FROM students
