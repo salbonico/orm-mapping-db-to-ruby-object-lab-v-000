@@ -48,10 +48,7 @@ output = []
   DB[:conn].execute(sql).map do |row|
     output << Student.new_from_db(row)
   end
-
-
-
-
+return output
 end
 
 
