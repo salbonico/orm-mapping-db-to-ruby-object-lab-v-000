@@ -85,11 +85,11 @@ def self.first_student_in_grade_10
     WHERE grade = 10
     LIMIT 1;
   SQL
-output = []
+
   DB[:conn].execute(sql).map do |row|
-    output << Student.new_from_db(row)
+  return Student.new_from_db(row)
   end
-return output
+
 end
 
 
